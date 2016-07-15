@@ -16,10 +16,10 @@ CMD ./steamcmd.sh +login anonymous +app_update 258550 +quit && ./Steam/steamapps
   -server.port 28015 \
   -rcon.ip "$RUST_SERVER_IP" \
   -rcon.port 28016 \
-  -rcon.password "rustybong2016" \
+  -rcon.password "$RUST_PASSWORD" \
   -server.maxplayers 200 \
   -server.hostname "$RUST_HOSTNAME" \
-  -server.identity "rustybong_v1" \
+  -server.identity "$RUST_IDENTITY" \
   -server.level "Procedural Map" \
   -server.seed $RUST_WORLD_SEED \
   -server.worldsize $RUST_WORLD_SIZE \
