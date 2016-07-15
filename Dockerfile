@@ -11,19 +11,19 @@ RUN curl -O -L https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.t
 RUN tar -zxf steamcmd_linux.tar.gz
 USER steam
 RUN ./steamcmd.sh +login anonymous +app_update 258550 +quit
-CMD ./Steam/steamapps/common/rust_dedicated/RustDedicated -batchmode -nographics \
-  -server.ip IPAddressHere \
+CMD ./steamcmd.sh +login anonymous +app_update 258550 +quit && ./Steam/steamapps/common/rust_dedicated/RustDedicated -batchmode -nographics \
+  -server.ip "$RUST_SERVER_IP" \
   -server.port 28015 \
-  -rcon.ip IPAddressHere \
+  -rcon.ip "$RUST_SERVER_IP" \
   -rcon.port 28016 \
-  -rcon.password "rcon password here" \
-  -server.maxplayers 75 \
-  -server.hostname "Server Name" \
-  -server.identity "my_server_identity" \
+  -rcon.password "rustybong2016" \
+  -server.maxplayers 200 \
+  -server.hostname "$RUST_HOSTNAME" \
+  -server.identity "rustybong_v1" \
   -server.level "Procedural Map" \
-  -server.seed 12345 \
-  -server.worldsize 3000 \
+  -server.seed $RUST_WORLD_SEED \
+  -server.worldsize $RUST_WORLD_SIZE \
   -server.saveinterval 300 \-server.globalchat true \
-  -server.description "Description Here" \
-  -server.headerimage "512x256px JPG/PNG headerimage link here" \
-  -server.url "Website Here"
+  -server.description "$RUST_DESCRIPTION" \
+  -server.headerimage "$RUST_HEADER_IMAGE" \
+  -server.url "$RUST_URL"
